@@ -1,10 +1,10 @@
 <template>
-		<div>
+	<div>
 		<h1>Garages</h1>
 		<ul>
 		    <li v-for="g in garagelist">{{ g.name }} <button type="button" class="btn btn-primary edit-garage">Edit</button></li>
 		</ul>
-		</div>
+	</div>
 </template>
 
 <script>

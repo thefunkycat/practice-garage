@@ -47,7 +47,7 @@ class Garage(BaseModel):
         if 'brand' in props:
             self.brand = props['brand']
         if 'postal_country' in props:
-            self.portal_country = props['postal_country']
+            self.postal_country = props['postal_country']
 
     def save(self):
         self.put()

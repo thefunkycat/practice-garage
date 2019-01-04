@@ -1,6 +1,7 @@
 from google.appengine.ext import ndb
 import logging
 
+
 class BaseModel(ndb.Model):
     
     @property
