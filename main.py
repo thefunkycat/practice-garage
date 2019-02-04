@@ -2,7 +2,6 @@ import webapp2
 from webapp2_extras import jinja2
 from jinja2 import PackageLoader
 from practice.handlers.garages import Garages
-from practice.handlers.home import HomePage
 
 
 class MainPage(webapp2.RequestHandler):
@@ -12,7 +11,6 @@ class MainPage(webapp2.RequestHandler):
             'environment_args': {
                 'loader': PackageLoader('practice', 'templates')
             }
-
         }
         return jinja2.Jinja2(app=self.app, config=config)
 
@@ -32,7 +30,6 @@ class MainPage(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/home', HomePage),
 
     ('/garages', Garages),
     ('/garages/(.*)', Garages)
