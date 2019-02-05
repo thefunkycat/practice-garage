@@ -6,6 +6,7 @@
 .vscode/
 .settings/
 node_modules/
+app/node_modules/
 static/dist/
 
 static/dist/home.js
