@@ -1,5 +1,5 @@
-from practice.handlers import BasicHandler
-from practice.model.garage import Garage
+from app.handlers import BasicHandler
+from app.model.garage import Garage
 import json
 import logging
 

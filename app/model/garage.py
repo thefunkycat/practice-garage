@@ -1,6 +1,6 @@
 from google.appengine.ext import ndb
 from google.appengine.api import memcache
-from practice.system.base.model import BaseModel
+from app.system.base.model import BaseModel
 
 
 class Garage(BaseModel):
@@ -18,18 +18,6 @@ class Garage(BaseModel):
 
     @classmethod
     def list(cls, name=None, brand=None, limit=20):
-        if not name and not brand:
-            """ example with caching
-            """
-            garages = memcache.get("garages")
-            if not garages:
-                q = Garage.query()
-                garages = [x for x in q]
-                memcache.set("garages", garages)
-            if limit and len(garages) > limit:
-                return garages[:limit]
-            return garages
-
         """ example normal query with filter
         """
         q = Garage.query()
@@ -39,15 +27,15 @@ class Garage(BaseModel):
             q = q.filter(Garage.brand == brand)
         if limit:
             return q.fetch(limit)
-        return [x for x in q]
+        return q
 
-    def fill(self, props):
-        if 'name' in props:
-            self.name = props['name']
-        if 'brand' in props:
-            self.brand = props['brand']
-        if 'postal_country' in props:
-            self.postal_country = props['postal_country']
+    # def fill(self, props):
+    #     if 'name' in props:
+    #         self.name = props['name']
+    #     if 'brand' in props:
+    #         self.brand = props['brand']
+    #     if 'postal_country' in props:
+    #         self.postal_country = props['postal_country']
 
     def save(self):
         self.put()

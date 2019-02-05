@@ -97,7 +97,7 @@ class BasicTestCase(unittest2.TestCase):
         self.memcache_test()
     
     def datastore_test(self):
-        from practice.model.garage import Garage
+        from app.model.garage import Garage
         props = {"name": "test",
                  "postal_country": "NL",
                  "brand": "Lamborghini"}

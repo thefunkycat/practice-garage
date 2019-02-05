@@ -1,5 +1,5 @@
 from testcases.base import BasicTestCase
-from practice.model.garage import Garage
+from app.model.garage import Garage
 
 
 """ Very simple example how to use the BasicTestCase

@@ -4,7 +4,7 @@
 
 from webapp2 import RequestHandler
 from webapp2_extras import jinja2
-from practice.system.params import ParamCollection
+from app.system.params import ParamCollection
 
 class BasicHandler(RequestHandler):
     

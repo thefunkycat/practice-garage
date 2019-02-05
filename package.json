@@ -2,7 +2,6 @@
   "name": "practice-garage",
   "version": "1.0.0",
   "description": "Practice for google app engine python with jinja2 jquery and testsuite",
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cornevanrij/practice-garage.git"
@@ -13,20 +12,9 @@
     "url": "https://github.com/cornevanrij/practice-garage/issues"
   },
   "homepage": "https://github.com/cornevanrij/practice-garage#readme",
-  "devDependencies": {
-    "css-loader": "^0.28.7",
-    "vue-loader": "^13.5.0",
-    "vue-template-compiler": "^2.5.3",
-    "webpack": "^3.8.1"
-  },
-  "dependencies": {
-    "bootstrap": "^3.3.5",
-    "jquery": "^3.3.1",
-    "vue": "^2.5.3",
-    "vue-router": "^3.0.1"
-  },
+  "devDependencies": {},
+  "dependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --config build/webpack.dev.conf.js"
+    "postinstall": "cd app && npm install"
   }
 }
