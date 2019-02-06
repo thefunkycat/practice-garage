@@ -1,18 +1,18 @@
 import webapp2
 from webapp2_extras import jinja2
 from jinja2 import PackageLoader
-from app.handlers.garages import Garages
+from handlers.garages import Garages
 
 
 class MainPage(webapp2.RequestHandler):
 
     def jinja(self):
-        config = {
-            'environment_args': {
-                'loader': PackageLoader('app', 'templates')
-            }
-        }
-        return jinja2.Jinja2(app=self.app, config=config)
+        # config = {
+        #     'environment_args': {
+        #         'loader': PackageLoader('templates')
+        #     }
+        # }
+        return jinja2.Jinja2(app=self.app)#, config=config)
 
     def render_response(self, _template, **tv):
         """ tv = template value

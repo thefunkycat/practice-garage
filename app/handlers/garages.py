@@ -1,9 +1,9 @@
-from app.handlers import BasicHandler
-from app.model.garage import Garage
+from shared.system.base_handler import BaseHandler
+from shared.model.garage import Garage
 import json
 import logging
 
-class Garages(BasicHandler):
+class Garages(BaseHandler):
     """ Handler for Garage
 
         Supports up to 3 parameters

@@ -17,7 +17,7 @@ module.exports = {
         //  when using multiple entry points
         filename: "[name].js",
         chunkFilename: "[name].chunk.js",
-        path: resolve("../static/dist")
+        path: resolve("static/dist")
     },
     plugins: [
         new webpack.ProvidePlugin({

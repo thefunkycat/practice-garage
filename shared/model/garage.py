@@ -1,6 +1,6 @@
 from google.appengine.ext import ndb
 from google.appengine.api import memcache
-from app.system.base.model import BaseModel
+from system.base.model import BaseModel
 
 
 class Garage(BaseModel):
