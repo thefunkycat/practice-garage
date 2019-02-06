@@ -4,6 +4,6 @@ from handlers import handler
 
 
 app = webapp2.WSGIApplication([
-    ('/', handler.WorkerHandler),
-    ('/(.*)', handler.WorkerHandler)
+    ('/worker/', handler.WorkerHandler),
+    ('/worker/(.*)', handler.WorkerHandler)
     ], debug=True)

@@ -30,5 +30,5 @@ handlers:
   application_readable: true
  
 - url: /.*
-  script: main.app
+  script: app.app
 
