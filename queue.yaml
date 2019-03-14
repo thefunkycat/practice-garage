@@ -1,0 +1,5 @@
+# a slow rate worker starting task per second
+- name: worker
+  rate: 1/s
+  bucket_size: 2
+  target: worker
