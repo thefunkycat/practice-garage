@@ -2,7 +2,7 @@
 	<div class="grid-container">
 		<div class="title">
 			<h1>Garages</h1>
-			<garage-form @change="garageList=$event"></garage-form>
+			<new-garage @change="garageList=$event"></new-garage>
 		</div>
 		<ul class="list-group">
 		    <li v-for="g in garageList" class="list-group-item">
@@ -16,15 +16,14 @@
 <script>
     import GarageListItem from "./garage-list-item";
     import GarageForm from "./garage-form";
+	import NewGarage from "./new-garage";
+
 	export default {
 		name: 'garage-list',
-		components: {GarageListItem, GarageForm},
+		components: {NewGarage, GarageListItem, GarageForm},
 		data: function () {
 			return {
-				garageList: [],
-				toggleEdit: false,
-				toggleAdd: false,
-				newGarage: {}
+				garageList: []
 			}
 		},
 		methods: {
@@ -46,7 +45,6 @@
 			this.load();
 		}
 	}
-
 
 </script>
 
