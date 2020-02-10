@@ -45,6 +45,15 @@ for now use a test environment:<br>
 To run the application run the script `dev_appserver.py`
 This will automatically start the server with all env variables set.
 
+## Datastore viewer
+Sadly google did not include a datastore viewer in gcloud, but luckily for us there is a package called [Datastore Emulator UI](https://github.com/streamrail/dsui) to get this functionality back.
+To install run the following command `npm i -g @streamrail/dsui`
+ 
+
+## Starting the server
+In terminal run `gcloud beta emulators datastore start --project practice-garage --host-port localhost:8000` for the datastore emulator. <br>
+In separate terminal run `dsui -r practice-garage -e localhost:8000` for the datastore viewer. <br>
+Run python script `dev_appserver.py` for the actual application.
 
 ## List of things
 [datastore](https://googleapis.dev/python/datastore/latest/index.html)<br>

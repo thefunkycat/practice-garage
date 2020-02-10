@@ -11,7 +11,6 @@ npm run dev
 """
 
 import os
-import subprocess
 
 # Set environment variables
 os.environ["FLASK_ENV"] = "development"
