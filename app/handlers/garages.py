@@ -1,5 +1,6 @@
 from flask import Blueprint, abort, jsonify, request
 from shared.model.garage import Garage
+import logging
 
 bp = Blueprint(name='garages', import_name=__name__, url_prefix='/garages')
 
@@ -29,6 +30,7 @@ def garage_list():
 
 @bp.route('/', methods=["POST"])
 def garage_add():
+    logging.warning(request.json)
     garage = Garage.add(props=request.json)
     return garage_list()
 
