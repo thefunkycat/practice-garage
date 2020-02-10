@@ -9,8 +9,11 @@ module.exports = {
     context: path.resolve(__dirname, '../'),
     watch: true,
     entry: {
-        app: './src/js/main.js',
-        home: './src/js/home.js'
+        app: './src/js/main.js'
+    },
+    devtool: 'inline-source-map',
+    devServer: {
+        contentBase: '../app/static/dist'
     },
     output: {
         // Make sure to use [name] or [id] in output.filename

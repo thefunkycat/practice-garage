@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../components/Home'
-import Garage from '../components/garagelist'
+import Garages from '../components/garagelist'
 
 Vue.use(Router)
 
@@ -15,7 +15,7 @@ export default new Router({
         {
             path: '/garages',
             name: 'garages',
-            component: Garage
+            component: Garages
         }
 
     ]

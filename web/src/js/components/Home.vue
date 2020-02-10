@@ -2,6 +2,7 @@
     <div>
         <h1>Home</h1>
         <h2>{{ msg }}</h2>
+        <router-link to="/garages">Garages</router-link>
     </div>
 </template>
 

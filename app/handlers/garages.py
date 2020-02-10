@@ -1,30 +1,47 @@
-from shared.system.base_handler import BaseHandler
+from flask import Blueprint, abort, jsonify, request
 from shared.model.garage import Garage
-import json
-import logging
 
-class Garages(BaseHandler):
-    """ Handler for Garage
+bp = Blueprint(name='garages', import_name=__name__, url_prefix='/garages')
 
-        Supports up to 3 parameters
-        key = always a garage id
-        topic = what you want to do
-        ident = Can be id of another class as child from Garage
-    """
+# @garages.route('/', defaults={'page': 'index'})
+@bp.route('/', methods=["GET"])
+def garage_list():
+    print(request.args)
+    if request.args and 'garage' in request.args:
+        garage = Garage.get(key=request.args.get('garage'))
+        return jsonify({
+            'id': garage.id,
+            'name': garage.name,
+            'brand': garage.brand,
+            'postal_country': garage.postal_country
+        })
+    return jsonify(
+        [
+            {
+                'id': g.id,
+                'name': g.name,
+                'brand': g.brand,
+                'postal_country': g.postal_country
+            } for g in Garage.list()
+        ]
+    )
 
-    def get(self, key="", topic="", ident=""):
-        if not key:
-            garages = Garage.query()
-            garages = json.dumps([p.to_dict() for p in Garage.query().fetch()])
-            self.render_json(garages)
-        else:
-            garage = Garage.get(key)
-            logging.warning("Got garage " + garage.name)
-            pass
 
-    def post(self, key="", topic="", ident=""):
-        if not key:
-            Garage.add(self.params.params)
-        else:
-            # edit garage
-            pass
+@bp.route('/', methods=["POST"])
+def garage_add():
+    garage = Garage.add(props=request.json)
+    return garage_list()
+
+@bp.route('/', methods=["PUT"])
+def garage_update():
+    props = request.json
+    garage = Garage.get(key=props.pop('id'))
+    # print(garage)
+    garage.update(props=props)
+    return garage_list()
+
+@bp.route('/', methods=["DELETE"])
+def garage_delete():
+    garage = Garage.get(key=request.json.pop('garage'))
+    garage.delete()
+    return garage_list()

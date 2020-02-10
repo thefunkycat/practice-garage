@@ -1,7 +1,7 @@
 """ Helper class for the params of the handler
 """
 import datetime, cgi
-import urllib
+import urllib.parse
 import logging
 
 class ParamCollection():
@@ -9,15 +9,15 @@ class ParamCollection():
         self.params = {}
         if request:
             for k in request.arguments():
-                self.params[urllib.unquote(k)] = urllib.unquote(request.get(k))
+                self.params[urllib.parse.unquote(k)] = urllib.parse.unquote(request.get(k))
 
             # work around for PUT request that doesn't process the parameter correctly    
             if len(self.params) == 0 and request.method == 'PUT':
-                pp = cgi.parse_qs(request.body, keep_blank_values=True)
+                pp = urllib.parse.parse_qs(request.body, keep_blank_values=True)
                 for p in pp:
                     value = pp[p][0]
-                    if isinstance(value, str):
-                        value = unicode(value, 'utf-8')
+                    # if isinstance(value, str):
+                    #     value = unicode(value, 'utf-8')
                     self.params[p] = value
 
     def removeEmpty(self):
@@ -84,7 +84,7 @@ class ParamCollection():
                     dt = datetime.datetime.strptime(v, '%H:%M')
                     t = datetime.time(hour=dt.hour, minute=dt.minute)
 
-            except Exception, e:
+            except Exception as e:
                 logging.warning("Time Error: %s - %s" % (v, e.message))
         
         return t   
@@ -95,7 +95,7 @@ class ParamCollection():
         if v is not None:
             try:
                 f = float(v)
-            except Exception, e:
+            except Exception as e:
                 logging.warning("Number format Error: %s - %s" % (v, e.message))  
 
         return f
@@ -132,7 +132,7 @@ class ParamCollection():
                         dt = datetime.datetime.strptime(v,'%Y-%m-%dT%H:%M:%SZ')
 
                     d = datetime.date(dt.year, dt.month, dt.day)
-                except Exception, e:
+                except Exception as e:
                     logging.warning("Date Error: %s - %s" % (v, e.message))
 
         return d
@@ -153,7 +153,7 @@ class ParamCollection():
 
             try:
                 dt = datetime.datetime.strptime(v,'%Y-%m-%dT%H:%M:%SZ')
-            except Exception, e:
+            except Exception as e:
                 logging.warning("DateTime Error: %s - %s" % (v, e.message))
 
         return dt
@@ -183,7 +183,7 @@ class ParamCollection():
                     dt = datetime.datetime.strptime(v, '%Y-%m-%dT%H:%M:%S.%fZ')
                 else:
                     dt = datetime.datetime.strptime(v, '%Y-%m-%dT%H:%M:%SZ')
-            except Exception, e:
+            except Exception as e:
                 logging.warning("DateTime Error: %s - %s" % (v, e.message))
 
         return dt
@@ -195,7 +195,7 @@ class ParamCollection():
         if v is not None:
             try:
                 i = int(v)
-            except Exception, e:
+            except Exception as e:
                 logging.warning("Integer Error: %s - %s" % (v, e.message))
         return i
 

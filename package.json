@@ -15,6 +15,5 @@
   "devDependencies": {},
   "dependencies": {},
   "scripts": {
-    "postinstall": "cd app && npm install"
   }
 }
