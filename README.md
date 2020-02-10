@@ -40,29 +40,10 @@ To run this project you will need like in the FireStore example an emulator for 
 install the [datastore emulator](https://cloud.google.com/datastore/docs/tools/datastore-emulator)<br>
 
 for now use a test environment:<br>
-`gcloud beta emulators datastore start --project test --host-port localhost:8000`<br>
-To connect to this datastore you will need the following settings in your project:<br>
-```python
-import os
-os.environ["DATASTORE_DATASET"] = "test"
-os.environ["DATASTORE_EMULATOR_HOST"] = "localhost:8000"
-os.environ["DATASTORE_EMULATOR_HOST_PATH"] = "localhost:8000/datastore"
-os.environ["DATASTORE_HOST"] = "http://localhost:8000"
-os.environ["DATASTORE_PROJECT_ID"] = "test"
-```
-In pycharm its possible to define this in the run config<br>
-![Image of run variables](/dev_images/run-config-variables.png)<br>
-![Image of variables dialog](/dev_images/run-config-variables-dialog.png)
+`gcloud beta emulators datastore start --project practice-garage --host-port localhost:8000`<br>
 
-Intern defaults used for this project:<br>
-- DataStore :8000
-- App :8080
-- Worker :8081
-
-## Gunicorn
-[The green unicorn](https://gunicorn.org/)<br>
-Init follows
-
+To run the application run the script `dev_appserver.py`
+This will automatically start the server with all env variables set.
 
 
 ## List of things
