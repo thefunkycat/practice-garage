@@ -6,7 +6,7 @@ debug = os.environ.get('FLASK_ENV', 'prod') == 'development'
 _credentials = None
 _project = None
 if debug:
-    _project = 'test'
+    _project = 'practice-garage'
     import mock
     from google.auth import credentials
     _credentials = mock.Mock(spec=credentials.Credentials)
