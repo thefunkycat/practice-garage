@@ -2,12 +2,6 @@
 	<div class="grid-container">
 		<div class="title">
 			<h1>Garages</h1>
-            <button
-                class="btn btn-primary add-garage"
-                @click="garageDialog = true;"
-            >
-                Add Garage dialog
-            </button>
 			<new-garage @change="garageList=$event"></new-garage>
 
 		</div>
@@ -17,10 +11,6 @@
 				<garage-list-item :garage="g" @change="garageList=$event">hello</garage-list-item>
 			</li>
 		</ul>
-        <new-garage-dialog
-            v-if="garageDialog"
-            @close="garageDialog = false;"
-        />
 	</div>
 </template>
 
@@ -28,11 +18,10 @@
     import GarageListItem from "./garage-list-item";
     import GarageForm from "./garage-form";
 	import NewGarage from "./new-garage";
-    import NewGarageDialog from "./new-garage-dialog";
 
 	export default {
 		name: 'garage-list',
-		components: {NewGarage, GarageListItem, GarageForm, NewGarageDialog},
+		components: {NewGarage, GarageListItem, GarageForm},
 		data: function () {
 			return {
 				garageList: [],
