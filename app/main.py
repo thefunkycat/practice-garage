@@ -3,17 +3,6 @@ import os
 _credentials = None
 _project = None
 debug = os.environ.get('FLASK_ENV', 'prod') == 'development'
-if debug:
-    os.environ["DATASTORE_DATASET"] = "test"
-    os.environ["DATASTORE_EMULATOR_HOST"] = "localhost:8000"
-    os.environ["DATASTORE_EMULATOR_HOST_PATH"] = "localhost:8000/datastore"
-    os.environ["DATASTORE_HOST"] = "http://localhost:8000"
-    os.environ["DATASTORE_PROJECT_ID"] = "test"
-    print('setting mock credentials')
-    _project = 'test'
-    import mock
-    from google.auth import credentials
-    _credentials = mock.Mock(spec=credentials.Credentials)
 
 from flask import Flask, render_template, jsonify, request
 
@@ -21,7 +10,7 @@ from shared.system import datastore
 from shared.model.car import Car
 from shared.model.garage import Garage
 from google.cloud import ndb
-from app.handlers import garages
+from handlers import garages
 
 app = Flask(__name__)
 app.register_blueprint(garages.bp)

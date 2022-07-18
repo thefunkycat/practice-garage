@@ -159,4 +159,3 @@ class HBKeyWrapper(object):
 #         with datastore.client.context():
 #             result = super(HBKeyWrapper, self).get_async(**kwargs)
 #         return result
-

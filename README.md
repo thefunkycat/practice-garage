@@ -1,15 +1,20 @@
 # practice-garage
-
 This project is assuming you are familiar with the app engine basics:<br>
 if not please check [guestbook tutorial](https://gaedevs.com/blog/how-to-use-the-firestore-emulator-with-a-python-3-flask-app)
 a simple example with FireStore<br>
-_Optional: Try to use the DataStore instead_
+Optional: Try to use the DataStore instead
 
 Practice for google app engine python with Vue
 
 download the project
+## Setup python environment
 
-## Setup _google app engine_
+To install python its possible to use [brew](https://brew.sh/) however python2 is no longer supported<br>
+For python use [virtual env](https://pypi.org/project/virtualenv/) and 
+[virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html)
+to setup your environments
+
+## Setup google app engine
 
 - install 
 [google app engine sdk](https://cloud.google.com/sdk/docs/)<br>
@@ -20,9 +25,9 @@ download the project
 see [GAE local run](https://cloud.google.com/appengine/docs/standard/python3/testing-and-deploying-your-app)
 
 
-## Setup _npm and webpack_
+## Setup npm and webpack
 
-- install [nodejs](https://nodejs.org/en/) -- _install recommended version_
+- install [nodejs](https://nodejs.org/en/) -- _install version 16_
 
 use the commandline and go to the project.<br>
 Within this project mulitple smaller projects are defined app, worker and web. Since we are running

@@ -2,7 +2,14 @@
 	<div class="grid-container">
 		<div class="title">
 			<h1>Garages</h1>
+            <button
+                class="btn btn-primary add-garage"
+                @click="garageDialog = true;"
+            >
+                Add Garage dialog
+            </button>
 			<new-garage @change="garageList=$event"></new-garage>
+
 		</div>
 		<ul class="list-group">
 		    <li v-for="g in garageList" class="list-group-item">
@@ -10,6 +17,10 @@
 				<garage-list-item :garage="g" @change="garageList=$event">hello</garage-list-item>
 			</li>
 		</ul>
+        <new-garage-dialog
+            v-if="garageDialog"
+            @close="garageDialog = false;"
+        />
 	</div>
 </template>
 
@@ -17,13 +28,15 @@
     import GarageListItem from "./garage-list-item";
     import GarageForm from "./garage-form";
 	import NewGarage from "./new-garage";
+    import NewGarageDialog from "./new-garage-dialog";
 
 	export default {
 		name: 'garage-list',
-		components: {NewGarage, GarageListItem, GarageForm},
+		components: {NewGarage, GarageListItem, GarageForm, NewGarageDialog},
 		data: function () {
 			return {
-				garageList: []
+				garageList: [],
+                garageDialog: true,
 			}
 		},
 		methods: {
@@ -58,8 +71,15 @@
 			"title garage-list ";
 	}
 
-	.title { grid-area: title;
-		margin-right: 20px;}
-	.list-group { grid-area: garage-list; }
+	.title {
+        grid-area: title;
+		margin-right: 20px;
+    }
+	.list-group {
+        grid-area: garage-list;
+    }
+    .add-garage {
+        margin: 4px;
+    }
 
 </style>

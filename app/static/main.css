@@ -65,3 +65,20 @@
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+
+form.form-col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    div.form-row, label {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 8px;
+        align-items: center;
+        label, span {
+            text-align: right;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+    }
+}
