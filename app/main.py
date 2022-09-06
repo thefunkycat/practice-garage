@@ -40,25 +40,6 @@ def test_list():
         garages = [g for g in Garage.query()]
         return jsonify([{'name': g.name} for g in garages])
 
-@app.route('/create-cars')
-def create_cars():
-    for g in Garage.list():
-        car = Car(garage=g.key, brand=g.brand, license_plate="abcd123")
-        car.save()
-    return 'OK'
-
-@app.route('/list-cars')
-def list_cars():
-    garages = [c.garage for c in Car.list()]
-    # with Car.ndb_context():
-    garages = ndb.get_multi(garages)
-    for g in garages:
-        print(g.name)
-    for c in Car.list():
-        print(c.garage.get().name)
-
-    return 'OK'
-
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
     # Engine, a webserver process such as Gunicorn will serve the app. This
