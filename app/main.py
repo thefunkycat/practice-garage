@@ -7,7 +7,6 @@ debug = os.environ.get('FLASK_ENV', 'prod') == 'development'
 from flask import Flask, render_template, jsonify, request
 
 from shared.system import datastore
-from shared.model.car import Car
 from shared.model.garage import Garage
 from google.cloud import ndb
 from handlers import garages
