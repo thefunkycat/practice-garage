@@ -2,12 +2,12 @@
   <div class="grid-container">
     <div class="title">
       <h1>Garages</h1>
-      <new-garage @change="garageList = $event"></new-garage>
+      <new-garage @change="garageList.push($event)"></new-garage>
     </div>
     <ul class="list-group">
       <li v-for="g in garageList" :key="g.id" class="list-group-item">
         <!-- when a garage item is deleted it will raise change event and return the new list, so the $event is basically the data of the new list that was passed when change was raised -->
-        <garage-list-item :garage="g" @change='(i) => funstuff(i)'>hello</garage-list-item>
+        <garage-list-item :garage="g" @change="garageList.splice(garageList.findIndex(x=> x.id === g.id), 1)">hello</garage-list-item>
         <!-- @change="garageList = $event" -->
       </li>
     </ul>
@@ -29,11 +29,7 @@ export default {
     };
   },
   methods: {
-    funstuff(i) {
-      console.log('this is i')
-      console.log(i)
-      garageList = i;
-    },
+ 
     load() {
       $.ajax({
         type: "GET",

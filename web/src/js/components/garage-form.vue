@@ -1,5 +1,4 @@
-<!-- i dont see this being used anywhere??? -->
-<!-- <template>
+<template>
   <div>
     <h3>{{ title }}</h3>
     <div class="row">
