@@ -7,7 +7,7 @@
     <ul class="list-group">
       <li v-for="g in garageList" :key="g.id" class="list-group-item">
         <!-- when a garage item is deleted it will raise change event and return the new list, so the $event is basically the data of the new list that was passed when change was raised -->
-        <garage-list-item :garage="g">hello</garage-list-item>
+        <garage-list-item :garage="g" @change='(i) => funstuff(i)'>hello</garage-list-item>
         <!-- @change="garageList = $event" -->
       </li>
     </ul>
@@ -29,6 +29,11 @@ export default {
     };
   },
   methods: {
+    funstuff(i) {
+      console.log('this is i')
+      console.log(i)
+      garageList = i;
+    },
     load() {
       $.ajax({
         type: "GET",

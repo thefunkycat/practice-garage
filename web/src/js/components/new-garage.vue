@@ -2,15 +2,15 @@
   <div>
     <div class="row">
       <label class="col-sm-4">Name</label>
-      <input type="text" class="col-sm-8" v-model="garage.name" />
+      <input type="text" class="col-sm-8" v-model="myGarage.name" />
     </div>
     <div class="row">
       <label class="col-sm-4">Brand</label>
-      <input type="text" class="col-sm-8" v-model="garage.brand" />
+      <input type="text" class="col-sm-8" v-model="myGarage.brand" />
     </div>
     <div class="row">
       <label class="col-sm-4">Country</label>
-      <input type="text" class="col-sm-8" v-model="garage.postal_country" />
+      <input type="text" class="col-sm-8" v-model="myGarage.postal_country" />
     </div>
     <div class="row">
       <button class="pull-right btn btn-success" @click="save">Save</button>
@@ -21,9 +21,18 @@
 <script>
 export default {
   name: "new-garage",
+  props: {
+    garage: {
+      type: Object,
+      required: false,
+      default() {
+        return {name:"",brand:"",postal_country:""};
+      }
+    },
+  },
   data() {
     return {
-      garage: {
+      myGarage: {
         name: "",
         brand: "",
         postal_country: "",
@@ -32,18 +41,19 @@ export default {
   },
   methods: {
     save() {
-      console.log(this.garage);
+      console.log(this.myGarage);
       console.log("hello");
       $.ajax({
         type: "POST",
         url: `/garages/`,
         contentType: "application/json",
-        data: JSON.stringify(this.garage),
+        data: JSON.stringify(this.myGarage),
         timeout: 2000,
       })
         .then((data) => {
           this.$emit("change", data);
-
+          console.log("to check if being set inside save");
+          console.log(data);
           this.resetForm();
         })
         .always(() => {
@@ -51,12 +61,12 @@ export default {
         });
     },
     resetForm() {
-      if (this.garage.id) {
+      if (this.myGarage.id) {
         Object.assign(this.myGarage, this.garage);
       } else {
-        this.garage.name = "";
-        this.garage.brand = "";
-        this.garage.postal_country = "";
+        this.myGarage.name = "";
+        this.myGarage.brand = "";
+        this.myGarage.postal_country = "";
         console.log("are you being reset");
       }
     },

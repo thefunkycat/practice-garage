@@ -1,4 +1,5 @@
-<template>
+<!-- i dont see this being used anywhere??? -->
+<!-- <template>
   <div>
     <h3>{{ title }}</h3>
     <div class="row">
@@ -14,7 +15,7 @@
       <input type="text" class="col-sm-8" v-model="garage.postal_country" />
     </div>
     <div class="row">
-      <button class="pull-right btn btn-success" @click="save">Save</button>
+      <button class="pull-right btn btn-success" @click="save">SaveYes</button>
     </div>
   </div>
 </template>
@@ -90,4 +91,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped></style> -->
